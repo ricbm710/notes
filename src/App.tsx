@@ -1,7 +1,15 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+
+//rrd
+import { Outlet } from "react-router-dom";
+//components
+import NavBar from "./components/NavBar";
+
 function App() {
   return (
     <>
-      <h1>Notes</h1>
+      <NavBar />
+      <Outlet />
     </>
   );
 }
