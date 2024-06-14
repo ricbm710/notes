@@ -28,7 +28,12 @@ function App() {
   });
 
   //*Set context for passing props to Outlet
-  const contextValue: OutletContext = { notes, currentNote, setCurrentNote };
+  const contextValue: OutletContext = {
+    notes,
+    setNotes,
+    currentNote,
+    setCurrentNote,
+  };
 
   return (
     <>

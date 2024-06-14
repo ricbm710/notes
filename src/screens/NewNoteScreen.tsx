@@ -9,17 +9,12 @@ import NoteForm from "../components/NoteForm";
 
 const NewNoteScreen = () => {
   //*Retrieve props
-  const { notes, currentNote, setCurrentNote } =
-    useOutletContext<OutletContext>();
+  const {} = useOutletContext<OutletContext>();
 
   return (
     <Container>
-      <h1>New Note Screen</h1>
-      <NoteForm
-        notes={notes}
-        currentNote={currentNote}
-        setCurrentNote={setCurrentNote}
-      />
+      <h1 className="text-center mt-2">Nueva Nota</h1>
+      <NoteForm action="new" />
     </Container>
   );
 };
