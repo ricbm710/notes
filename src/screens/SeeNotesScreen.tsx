@@ -1,7 +1,14 @@
-import React from "react";
+//bootstrap
+import { Container } from "react-bootstrap";
 
 const SeeNotesScreen = () => {
-  return <div>SeeNotesScreen</div>;
+  return (
+    <>
+      <Container>
+        <div>SeeNotesScreen</div>
+      </Container>
+    </>
+  );
 };
 
 export default SeeNotesScreen;

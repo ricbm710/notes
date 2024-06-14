@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <Navbar>
+    <Navbar bg="primary" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand>Notas by Ricardo</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">
+          Notas by Ricardo
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>

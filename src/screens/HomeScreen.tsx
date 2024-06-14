@@ -1,5 +1,14 @@
+//bootstrap
+import { Container } from "react-bootstrap";
+
 const HomeScreen = () => {
-  return <div>HomeScreen</div>;
+  return (
+    <>
+      <Container>
+        <p>Vite React App using TypeScript</p>
+      </Container>
+    </>
+  );
 };
 
 export default HomeScreen;
