@@ -1,5 +1,5 @@
 //rrd
-import { FormProps, useOutletContext } from "react-router-dom";
+import { FormProps, useNavigate, useOutletContext } from "react-router-dom";
 //datatypes
 import { OutletContext } from "../datatypes/datatypes";
 //bootstrap
@@ -29,11 +29,15 @@ const NoteForm = ({ action }: FormProps) => {
     }));
   };
 
+  let navigate = useNavigate();
+
   //*onClick button handler
-  const buttonClickHandler = () => {
+  const buttonClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     saveUpdatedNotes([...notes, currentNote]);
 
-    setNotes((prevNotes) => ({ ...prevNotes, currentNote }));
+    setNotes((prevNotes) => [...prevNotes, currentNote]);
 
     //*set currentNote state to init
     setCurrentNote({
@@ -41,11 +45,14 @@ const NoteForm = ({ action }: FormProps) => {
       title: "",
       body: "",
     });
+
+    navigate("/new");
   };
 
   //alert message
-  const [message, setMessage] = useState<string>("message");
+  const [message] = useState<string>("message");
 
+  console.log(notes);
   return (
     <Container className="mt-2">
       <Row className="justify-content-center">

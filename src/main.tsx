@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <NewNoteScreen />,
       },
       {
-        path: "/notes",
+        path: "/seenotes",
         element: <SeeNotesScreen />,
       },
     ],

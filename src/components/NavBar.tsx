@@ -14,7 +14,7 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/new">
               Nueva Nota
             </Nav.Link>
-            <Nav.Link as={Link} to="/notes">
+            <Nav.Link as={Link} to="/seenotes">
               Ver Notas
             </Nav.Link>
           </Nav>
