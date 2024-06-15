@@ -17,3 +17,10 @@ export interface OutletContext {
 export interface FormProps {
   action: string;
 }
+
+//*CustomAlert Props
+export interface AlertProps {
+  message: string;
+  type: "success" | "danger" | "warning" | "info";
+  duration: number; // ms
+}

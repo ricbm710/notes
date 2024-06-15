@@ -6,10 +6,19 @@ import { Trash } from "react-bootstrap-icons";
 import { useOutletContext } from "react-router-dom";
 //datatypes
 import { OutletContext } from "../datatypes/datatypes";
+//utils
+import { removeNote } from "../utils/utils";
 
 const SeeNotesScreen = () => {
   //*retrieving props
   const { notes } = useOutletContext<OutletContext>();
+
+  //* Click Handler
+  const removeClickHandler = (id: string) => {
+    removeNote(id);
+    window.location.reload();
+  };
+
   return (
     <Container>
       <Row>
@@ -23,7 +32,11 @@ const SeeNotesScreen = () => {
                     <Card.Body>
                       <Card.Title>{note.title}</Card.Title>
                       <Card.Text>{note.body}</Card.Text>
-                      <Button className="btn-danger">
+                      <Button
+                        className="btn-danger"
+                        type="submit"
+                        onClick={() => removeClickHandler(note.id)}
+                      >
                         <Trash />
                       </Button>
                     </Card.Body>

@@ -15,3 +15,19 @@ export const generateRandomId = (): string => {
 export const saveUpdatedNotes = (updatedNotes: Note[]) => {
   localStorage.setItem("notes", JSON.stringify(updatedNotes));
 };
+
+//remove note
+export const removeNote = (id: string) => {
+  const notes = localStorage.getItem("notes");
+  if (!notes) {
+    return null;
+  }
+
+  const jsonNotes: Note[] = JSON.parse(notes);
+
+  const updatedNotes = jsonNotes.filter((note) => note.id !== id);
+
+  const jsonUpdatedNotes = JSON.stringify(updatedNotes);
+
+  localStorage.setItem("notes", jsonUpdatedNotes);
+};

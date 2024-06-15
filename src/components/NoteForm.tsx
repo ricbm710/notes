@@ -1,11 +1,13 @@
 //rrd
-import { FormProps, useNavigate, useOutletContext } from "react-router-dom";
+import { FormProps, useOutletContext } from "react-router-dom";
 //datatypes
 import { OutletContext } from "../datatypes/datatypes";
 //bootstrap
-import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { generateRandomId, saveUpdatedNotes } from "../utils/utils";
+//components
+import CustomAlert from "./CustomAlert";
 
 const NoteForm = ({ action }: FormProps) => {
   //*Retrieve props
@@ -27,15 +29,19 @@ const NoteForm = ({ action }: FormProps) => {
       ...prevNote,
       [e.target.name]: e.target.value,
     }));
-  };
 
-  let navigate = useNavigate();
+    //
+    setAlertMessage("");
+    setAlertStatus("");
+  };
 
   //*onClick button handler
   const buttonClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     saveUpdatedNotes([...notes, currentNote]);
+    setAlertMessage("Nota Guardada Correctamente");
+    setAlertStatus("success");
 
     setNotes((prevNotes) => [...prevNotes, currentNote]);
 
@@ -45,19 +51,23 @@ const NoteForm = ({ action }: FormProps) => {
       title: "",
       body: "",
     });
-
-    navigate("/new");
   };
 
-  //alert message
-  const [message] = useState<string>("message");
+  //*set Alert message & status
+  const [alertMessage, setAlertMessage] = useState<string>("");
+  const [alertStatus, setAlertStatus] = useState<string>("");
 
-  console.log(notes);
   return (
     <Container className="mt-2">
       <Row className="justify-content-center">
         <Col md={6}>
-          <Alert variant="success">{message}</Alert>
+          {alertStatus === "success" && (
+            <CustomAlert
+              message={alertMessage}
+              type={alertStatus}
+              duration={3000}
+            ></CustomAlert>
+          )}
           <Form>
             <Form.Group controlId="formTitle">
               <Form.Label className="fw-bold">Titulo</Form.Label>

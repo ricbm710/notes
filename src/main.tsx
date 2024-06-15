@@ -22,13 +22,13 @@ const router = createBrowserRouter([
         element: <NewNoteScreen />,
       },
       {
-        path: "/seenotes",
+        path: "/notes",
         element: <SeeNotesScreen />,
       },
     ],
   },
 ]);
-
+//comment here
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
