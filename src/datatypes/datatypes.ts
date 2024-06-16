@@ -21,6 +21,13 @@ export interface FormProps {
 //*CustomAlert Props
 export interface AlertProps {
   message: string;
-  type: "success" | "danger" | "warning" | "info";
+  type: string; //"success" | "danger" | "warning" | "info";
   duration: number; // ms
+}
+
+//*Alert State
+export interface AlertState {
+  on: boolean;
+  message: string;
+  type: string;
 }

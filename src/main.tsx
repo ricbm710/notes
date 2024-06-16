@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen.tsx";
 import NewNoteScreen from "./screens/NewNoteScreen.tsx";
 import SeeNotesScreen from "./screens/SeeNotesScreen.tsx";
+import EditNoteScreen from "./screens/EditNoteScreen.tsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/notes",
         element: <SeeNotesScreen />,
+      },
+      {
+        path: "/edit/:id",
+        element: <EditNoteScreen />,
       },
     ],
   },

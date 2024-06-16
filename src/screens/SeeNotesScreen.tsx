@@ -1,22 +1,29 @@
 //bootstrap
 import { Button, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
 //bootstrap icons
-import { Trash } from "react-bootstrap-icons";
+import { Pen, Trash } from "react-bootstrap-icons";
 //rrd
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 //datatypes
-import { OutletContext } from "../datatypes/datatypes";
+import { Note, OutletContext } from "../datatypes/datatypes";
 //utils
 import { removeNote } from "../utils/utils";
 
 const SeeNotesScreen = () => {
   //*retrieving props
   const { notes } = useOutletContext<OutletContext>();
+  console.log(notes);
 
   //* Click Handler
   const removeClickHandler = (id: string) => {
     removeNote(id);
     window.location.reload();
+  };
+
+  const navigate = useNavigate();
+
+  const editClickHandler = (note: Note) => {
+    navigate(`/edit/${note.id}`);
   };
 
   return (
@@ -33,11 +40,18 @@ const SeeNotesScreen = () => {
                       <Card.Title>{note.title}</Card.Title>
                       <Card.Text>{note.body}</Card.Text>
                       <Button
-                        className="btn-danger"
+                        className="btn-danger me-2"
                         type="submit"
                         onClick={() => removeClickHandler(note.id)}
                       >
                         <Trash />
+                      </Button>
+                      <Button
+                        className="btn-secondary me-2"
+                        type="submit"
+                        onClick={() => editClickHandler(note)}
+                      >
+                        <Pen />
                       </Button>
                     </Card.Body>
                   </Card>

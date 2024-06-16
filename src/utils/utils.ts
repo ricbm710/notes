@@ -31,3 +31,21 @@ export const removeNote = (id: string) => {
 
   localStorage.setItem("notes", jsonUpdatedNotes);
 };
+
+//get note by id
+export const getNoteById = (id: string): Note | null => {
+  // Retrieve notes from LocalStorage
+  const storedNotes = localStorage.getItem("notes");
+
+  if (storedNotes) {
+    // Parse stored JSON into an array of Note objects
+    const parsedNotes: Note[] = JSON.parse(storedNotes);
+
+    // Find the note with the given id
+    const note = parsedNotes.find((note) => note.id === id);
+
+    return note || null; // Return the found note or null if not found
+  }
+
+  return null; // Return null if no notes are stored
+};
