@@ -1,13 +1,14 @@
+//bootstrap
 import { Container, Nav, Navbar } from "react-bootstrap";
+//rrd
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  //comment here
   return (
     <Navbar bg="primary" data-bs-theme="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          Notas by Ricardo
+          Notas R
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

@@ -20,6 +20,7 @@ const SeeNotesScreen = () => {
     window.location.reload();
   };
 
+  //* Redirects to Edit Note with note id as param
   const navigate = useNavigate();
 
   const editClickHandler = (note: Note) => {
@@ -59,7 +60,7 @@ const SeeNotesScreen = () => {
               ))}
             </ListGroup>
           ) : (
-            <p>No Notes Found!</p>
+            <p>No hay Notas Almacenadas</p>
           )}
         </Col>
       </Row>

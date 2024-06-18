@@ -51,7 +51,7 @@ const NoteForm = ({ action }: FormProps) => {
       [e.target.name]: e.target.value,
     }));
 
-    //
+    // Alert State default
     setAlertState({ on: false, message: "", type: "" });
   };
 
@@ -83,7 +83,6 @@ const NoteForm = ({ action }: FormProps) => {
       const updatedNotes = notes.map((note) =>
         note.id === currentNote.id ? currentNote : note
       );
-      //console.log(updatedNotes);
 
       saveUpdatedNotes(updatedNotes);
       setNotes(updatedNotes);
@@ -92,12 +91,21 @@ const NoteForm = ({ action }: FormProps) => {
     }
   };
 
-  //*set Alert state
+  //* Alert State default
   const [alertState, setAlertState] = useState<AlertState>({
     on: false,
     message: "",
     type: "",
   });
+
+  //*blank input
+  const [isBlank, setIsBlank] = useState<boolean>(
+    currentNote.title === "" && currentNote.body === ""
+  );
+
+  useEffect(() => {
+    setIsBlank(currentNote.title === "" && currentNote.body === "");
+  }, [currentNote]);
 
   return (
     <Container className="mt-2">
@@ -132,12 +140,18 @@ const NoteForm = ({ action }: FormProps) => {
                 name="body"
               />
             </Form.Group>
+            {isBlank && (
+              <p style={{ color: "red", fontStyle: "italic" }}>
+                * Both inputs required for storage
+              </p>
+            )}
             <div className="text-center">
               <Button
                 type="submit"
                 variant="primary"
                 className="mt-2 mx-auto"
                 onClick={buttonClickHandler}
+                disabled={isBlank}
               >
                 {action === "new"
                   ? "Guardar Nuevo"
