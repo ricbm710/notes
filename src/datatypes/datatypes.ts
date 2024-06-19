@@ -5,6 +5,7 @@ export interface Note {
   id: string;
   title: string;
   body: string;
+  date: Date;
 }
 //*Outlet Context
 export interface OutletContext {

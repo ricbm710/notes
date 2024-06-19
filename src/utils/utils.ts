@@ -49,3 +49,11 @@ export const getNoteById = (id: string): Note | null => {
 
   return null; // Return null if no notes are stored
 };
+
+//Initialize New Note
+export const initCurrentNote = () => ({
+  id: generateRandomId(),
+  title: "",
+  body: "",
+  date: new Date(),
+});

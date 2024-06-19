@@ -25,6 +25,7 @@ function App() {
     id: "",
     title: "",
     body: "",
+    date: new Date(),
   });
 
   //*Set context for passing props to Outlet

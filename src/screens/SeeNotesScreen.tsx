@@ -12,7 +12,6 @@ import { removeNote } from "../utils/utils";
 const SeeNotesScreen = () => {
   //*retrieving props
   const { notes } = useOutletContext<OutletContext>();
-  console.log(notes);
 
   //* Click Handler
   const removeClickHandler = (id: string) => {
@@ -40,6 +39,9 @@ const SeeNotesScreen = () => {
                     <Card.Body>
                       <Card.Title>{note.title}</Card.Title>
                       <Card.Text>{note.body}</Card.Text>
+                      <Card.Text>
+                        Last updated:{note.date.toLocaleString()}{" "}
+                      </Card.Text>
                       <Button
                         className="btn-danger me-2"
                         type="submit"
