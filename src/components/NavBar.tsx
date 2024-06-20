@@ -14,10 +14,10 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
             <Nav.Link as={Link} to="/new">
-              Nueva Nota
+              New Note
             </Nav.Link>
             <Nav.Link as={Link} to="/notes">
-              Ver Notas
+              See Notes
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

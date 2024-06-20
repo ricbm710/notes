@@ -15,6 +15,7 @@ import {
   initCurrentNote,
   saveUpdatedNotes,
   formatDate,
+  duplicateFinder,
 } from "../utils/utils";
 //components
 import CustomAlert from "./CustomAlert";
@@ -40,10 +41,22 @@ const NoteForm = ({ action }: FormProps) => {
     }
   }, []);
 
+  //*is Id duplicate?
+  const [isDuplicate, setIsDuplicate] = useState<boolean>(false);
+
   //*onChange input handler
   const inputChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    //*Checks if title input already exists in Local Storage
+    if (e.target.name === "title" && duplicateFinder(notes, e.target.value)) {
+      setIsDuplicate(true);
+    } else {
+      if (e.target.name === "title") {
+        setIsDuplicate(false);
+      }
+    }
+
     setCurrentNote((prevNote) => ({
       ...prevNote,
       [e.target.name]: e.target.value,
@@ -121,21 +134,26 @@ const NoteForm = ({ action }: FormProps) => {
           )}
           <Form>
             <Form.Group controlId="formTitle">
-              <Form.Label className="fw-bold">Titulo</Form.Label>
+              <Form.Label className="fw-bold">Title</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Titulo"
+                placeholder="Title"
                 value={currentNote.title}
                 onChange={inputChangeHandler}
                 name="title"
               />
+              {isDuplicate && (
+                <p style={{ color: "red", fontStyle: "italic" }}>
+                  * This title already exists
+                </p>
+              )}
             </Form.Group>
             <Form.Group controlId="formBody">
-              <Form.Label className="fw-bold">Detalle</Form.Label>
+              <Form.Label className="fw-bold">Body</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={5}
-                placeholder="Detalle"
+                placeholder="Body"
                 value={currentNote.body}
                 onChange={inputChangeHandler}
                 name="body"
@@ -143,7 +161,7 @@ const NoteForm = ({ action }: FormProps) => {
             </Form.Group>
             {isBlank && (
               <p style={{ color: "red", fontStyle: "italic" }}>
-                * Both inputs required for storage
+                * Both inputs are required
               </p>
             )}
             <div className="text-center">
@@ -152,12 +170,12 @@ const NoteForm = ({ action }: FormProps) => {
                 variant="primary"
                 className="mt-2 mx-auto"
                 onClick={buttonClickHandler}
-                disabled={isBlank}
+                disabled={isBlank || isDuplicate}
               >
                 {action === "new"
-                  ? "Guardar Nuevo"
+                  ? "Save New"
                   : action === "edit"
-                  ? "Guardar Cambios"
+                  ? "Save Changes"
                   : "indefinido"}
               </Button>
             </div>

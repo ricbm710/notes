@@ -69,3 +69,9 @@ export function formatDate(date: Date): string {
 
   return `${month}/${day}/${year} at ${hours}:${minutes}`;
 }
+
+//Title Duplicate Finder
+export const duplicateFinder = (notes: Note[], title: string): boolean => {
+  const duplicate = notes.find((note) => note.title === title);
+  return duplicate ? true : false;
+};

@@ -13,7 +13,7 @@ const NewNoteScreen = () => {
 
   return (
     <Container>
-      <h1 className="text-center mt-2">Nueva Nota</h1>
+      <h1 className="text-center mt-2">New Note</h1>
       <NoteForm action="new" />
     </Container>
   );

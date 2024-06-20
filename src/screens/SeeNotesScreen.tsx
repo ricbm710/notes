@@ -30,7 +30,7 @@ const SeeNotesScreen = () => {
     <Container>
       <Row>
         <Col>
-          <h1 className="text-center mt-4 mb-4">Notas Almacenadas</h1>
+          <h1 className="text-center mt-4 mb-4">Stored Notes</h1>
           {notes.length > 0 ? (
             <ListGroup>
               {notes.map((note) => (
@@ -60,7 +60,7 @@ const SeeNotesScreen = () => {
               ))}
             </ListGroup>
           ) : (
-            <p>No hay Notas Almacenadas</p>
+            <p>You don't have stored notes :/</p>
           )}
         </Col>
       </Row>
