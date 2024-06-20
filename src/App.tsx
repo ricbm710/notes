@@ -26,6 +26,7 @@ function App() {
     title: "",
     body: "",
     date: new Date(),
+    formattedDate: "",
   });
 
   //*Set context for passing props to Outlet

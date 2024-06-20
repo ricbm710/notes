@@ -10,7 +10,12 @@ import { AlertState, OutletContext } from "../datatypes/datatypes";
 //bootstrap
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { getNoteById, initCurrentNote, saveUpdatedNotes } from "../utils/utils";
+import {
+  getNoteById,
+  initCurrentNote,
+  saveUpdatedNotes,
+  formatDate,
+} from "../utils/utils";
 //components
 import CustomAlert from "./CustomAlert";
 
@@ -43,6 +48,7 @@ const NoteForm = ({ action }: FormProps) => {
       ...prevNote,
       [e.target.name]: e.target.value,
       date: new Date(),
+      formattedDate: formatDate(new Date()),
     }));
 
     // Alert State default

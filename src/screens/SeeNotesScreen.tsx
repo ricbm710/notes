@@ -39,9 +39,7 @@ const SeeNotesScreen = () => {
                     <Card.Body>
                       <Card.Title>{note.title}</Card.Title>
                       <Card.Text>{note.body}</Card.Text>
-                      <Card.Text>
-                        Last updated:{note.date.toLocaleString()}{" "}
-                      </Card.Text>
+                      <Card.Text>Last updated: {note.formattedDate}</Card.Text>
                       <Button
                         className="btn-danger me-2"
                         type="submit"
